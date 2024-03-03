@@ -21,10 +21,10 @@ class ProductController extends Controller
      * Create Product
      * @param CreateProductRequest $request
      */
-    public function create(CreateProductRequest $request)
+    public function create(Request $request)
     {
         //product services
-        $product = $this->productService->createProduct($request->validated());
+        $product = $this->productService->createProduct($request->all());
 
         if (!$product) {
             return response()->json($product, 500);
@@ -79,7 +79,7 @@ class ProductController extends Controller
     /**
      * Update product
      */
-    public function update(CreateProductRequest $request, $productId)
+    public function update(Request $request, $productId)
     {
         $updatedProduct = $this->productService->updateProduct($productId, $request->all());
 
@@ -89,7 +89,7 @@ class ProductController extends Controller
         }
 
         // return product
-        return response()->json(['product' => $updatedProduct]);
+        return response()->json($updatedProduct);
     }
 
     /**

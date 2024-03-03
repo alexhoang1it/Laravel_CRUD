@@ -22,6 +22,7 @@ class Product extends BaseModel
      * @var array<int, string>
      */
     protected $fillable = [
+        'cart_id',
         'title',
         'description',
         'price',
